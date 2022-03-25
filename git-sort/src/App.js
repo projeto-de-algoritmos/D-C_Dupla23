@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ChakraProvider,
   Box,
@@ -15,9 +15,25 @@ import {
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AiFillGithub } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
-import { Logo } from './Logo';
+
+
 
 function App() {
+
+  const getUser = async(user) => {
+    const request = "https://api.github.com/users/" + user;
+    const data = await fetch(request)
+    const finalData = await data.json()
+    console.log(finalData)
+  }
+
+  function searchUser(e) {
+    console.log(user)
+    getUser(user)
+  }
+
+  const [user, setUser] = useState(null);
+
   return (
     <ChakraProvider theme={theme}>
       <Box textAlign="center" fontSize="xl" minH="100vh">
@@ -38,10 +54,13 @@ function App() {
                 pointerEvents="none"
                 children={<AiFillGithub size={30} />}
               />
-              <Input name="gituser" type="text" placeholder="Usuário git" />
+              <Input name="gituser" type="text" placeholder="Usuário git" 
+                     onChange={(e) => setUser(e.target.value)}
+              />
               <InputRightAddon
                 children={<BiSearchAlt size={30} />}
                 backgroundColor="whiteAlpha.100"
+                onClick = {searchUser}
               />
             </InputGroup>
 
