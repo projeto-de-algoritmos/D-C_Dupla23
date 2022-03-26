@@ -17,6 +17,7 @@ import {
   FormErrorMessage,
   Button,
   Grid,
+  Heading,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AiFillGithub } from 'react-icons/ai';
@@ -24,6 +25,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 import { RiGitRepositoryCommitsLine } from 'react-icons/ri';
 import { BsPeople } from 'react-icons/bs';
 import { mergeSort } from './utils/mergeSort';
+import gitsortImage from './utils/img/sort.png'
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -45,6 +47,9 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
+      <Heading textAlign="center">
+        <Image src={gitsortImage} alt="gitsortImage" width='10rem' height='5rem' margin='auto'/>
+      </Heading>
       <Box textAlign="center" fontSize="xl" minH="100vh" padding="18">
         <CSSReset />
         <Flex justifyContent="flex-end">
@@ -143,11 +148,13 @@ function App() {
                         '_blank'
                       )
                     }
+                    borderTopRadius="10rem"
                   >
                     <Image
                       src={user?.avatar_url}
                       alt="Dan Abramov"
                       width="100%"
+                      borderRadius="10rem"
                     />
                     <Text fontSize="2xl">{user?.name}</Text>
                     <Box textAlign="left" padding="4">
