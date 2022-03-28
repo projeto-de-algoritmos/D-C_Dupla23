@@ -38,7 +38,7 @@ function App() {
     const request = `https://api.github.com/users/${user}`;
     const data = await fetch(request);
     const userData = await data.json();
-    if (userData?.name) {
+    if (userData?.login) {
       setIsInvalid(false);
       setUsers([...users, userData]);
     } else setIsInvalid(true);
@@ -157,7 +157,7 @@ function App() {
                     />
                     <Box textAlign="left" padding="4">
                       <Text fontSize="xl" fontWeight="medium">
-                        {user?.name}
+                        {user?.name || user?.login} 
                       </Text>
                       <Divider marginBottom="2" />
                       <Flex gap="0.3rem">
