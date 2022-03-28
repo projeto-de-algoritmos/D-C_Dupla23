@@ -18,6 +18,7 @@ import {
   Button,
   Grid,
   Heading,
+  Divider,
 } from '@chakra-ui/react';
 import { ColorModeSwitcher } from './ColorModeSwitcher';
 import { AiFillGithub } from 'react-icons/ai';
@@ -25,7 +26,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 import { RiGitRepositoryCommitsLine } from 'react-icons/ri';
 import { BsPeople } from 'react-icons/bs';
 import { mergeSort } from './utils/mergeSort';
-import gitsortImage from './utils/img/sort.png'
+import gitsortImage from './utils/img/sort.png';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -43,16 +44,19 @@ function App() {
     } else setIsInvalid(true);
   };
 
-  console.log(users);
-
   return (
     <ChakraProvider theme={theme}>
-      <Heading textAlign="center">
-        <Image src={gitsortImage} alt="gitsortImage" width='10rem' height='5rem' margin='auto'/>
-      </Heading>
-      <Box textAlign="center" fontSize="xl" minH="100vh" padding="18">
+      <Heading textAlign="center"></Heading>
+      <Box textAlign="center" minH="100vh" padding="18">
         <CSSReset />
-        <Flex justifyContent="flex-end">
+        <Flex marginBottom="20">
+          <Image
+            src={gitsortImage}
+            alt="gitsortImage"
+            width="10rem"
+            height="5rem"
+            margin="auto"
+          />
           <ColorModeSwitcher justifySelf="flex-end" />
         </Flex>
         <Flex
@@ -127,54 +131,46 @@ function App() {
 
           <Grid
             width="100%"
-            templateColumns={[
-              '1fr',
-              '1fr 1fr',
-              '1fr 1fr 1fr',
-              '1fr 1fr 1fr',
-              '1fr 1fr 1fr 1fr',
-            ]}
+            templateColumns={['repeat(auto-fit, minmax(200px, 280px))']}
             gap="30"
           >
             {users?.length > 0 &&
               users?.map(user => {
                 return (
                   <Box
-                    backgroundColor="blackAlpha.300"
+                    // backgroundColor="blackAlpha.600"
                     cursor="pointer"
+                    boxShadow="base"
                     onClick={() =>
                       window.open(
                         `http://www.github.com/${user?.login}`,
                         '_blank'
                       )
                     }
-                    borderTopRadius="10rem"
+                    // borderTopRadius="10rem"
                   >
                     <Image
                       src={user?.avatar_url}
                       alt="Dan Abramov"
                       width="100%"
-                      borderRadius="10rem"
+                      // borderRadius="10rem"
                     />
-                    <Text fontSize="2xl">{user?.name}</Text>
                     <Box textAlign="left" padding="4">
+                      <Text fontSize="xl" fontWeight="medium">
+                        {user?.name}
+                      </Text>
+                      <Divider marginBottom="2" />
                       <Flex gap="0.3rem">
                         <RiGitRepositoryCommitsLine />
-                        <Text fontSize="medium">
-                          Repositórios públicos: {user?.public_repos}
-                        </Text>
+                        <Text>Repositórios públicos: {user?.public_repos}</Text>
                       </Flex>
                       <Flex gap="0.3rem">
                         <BsPeople />
-                        <Text fontSize="medium">
-                          Seguidores: {user?.followers} pessoas
-                        </Text>
+                        <Text>Seguidores: {user?.followers} pessoas</Text>
                       </Flex>
                       <Flex gap="0.3rem">
                         <BsPeople />
-                        <Text fontSize="medium">
-                          Seguindo: {user?.following} pessoas
-                        </Text>
+                        <Text>Seguindo: {user?.following} pessoas</Text>
                       </Flex>
                     </Box>
                   </Box>
