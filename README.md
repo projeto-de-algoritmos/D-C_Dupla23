@@ -22,6 +22,7 @@ A aplicação utiliza a [API do Github](https://docs.github.com/pt/rest) para pu
 ![shot2](./images/shot2.png)
 
 ## Perfil ordenados (nesse caso, por nº de repos)
+### Obs: Clicando no card, é direcionado para o perfil no Github.
 ![shot3](./images/shot3.png)
 
 ## Instalação 
@@ -52,8 +53,8 @@ npm start
 ```
 
 ## Passo a passo
-* Adicione um User do Github **público e válido**
-* Após adiciona-los, clique em ordenar por nº de repositório, por nº de seguidores ou nº de perfis seguindo
+* Adicione um User do Github **público e válido**.
+* Após adiciona-los, clique em ordenar por nº de repositório, por nº de seguidores ou nº de perfis seguindo.
 
 
 
